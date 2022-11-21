@@ -4,7 +4,7 @@ import BookItem from "./BookItem";
 const BookShelf = ({shelfTitle, booksList}) => {
 
     const bookItems = booksList.map((book) => {
-        return <BookItem key={book.id} Book={book}/>
+        return <BookItem key={book.id} Book={book} existInUserShelf={true}/>
     })
 
     return (<div className="bookshelf">

@@ -7,7 +7,7 @@ import SearchPage from "./SearchPage";
 
 function App() {
 
-  const [allBooks, setAllBooks] = useState([]);
+  const [userBooks, setAllBooks] = useState([]);
 
     useEffect(() => {
       let mounted=true
@@ -27,8 +27,8 @@ function App() {
 
   return (
   <Routes>
-    <Route exact path="/" element={<MainPage books={allBooks}/>}/>
-    <Route path="/search" element={<SearchPage/>}/>
+    <Route exact path="/" element={<MainPage books={userBooks}/>}/>
+    <Route path="/search" element={<SearchPage userBooks={userBooks} />}/>
   </Routes>
   );
 }
