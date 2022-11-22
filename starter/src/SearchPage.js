@@ -35,7 +35,7 @@ const SearchPage = ({userBooks}) => {
   }
 
   const searchedBooks =  searchResults.length !== 0 ? searchResults.map((book) => {
-        return <BookItem key={book.id} Book={book} existInUserShelf={(userBooks.filter((userBook) => userBook.title === book.title).length !== 0 ? true : false )} />
+        return <BookItem key={book.id} Book={book} existInUserShelf={(userBooks.filter((userBook) => userBook.id === book.id).length !== 0 ? true : false )} />
   }) : searchQuery !== "" ? <li>No matches found!!</li> : ""
 
     
