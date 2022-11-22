@@ -18,7 +18,7 @@ const BookItem = ({Book, existInUserShelf}) => {
                 backgroundImage:`url(${Book.imageLinks?.thumbnail})`
                }}
             ></div>
-            <ChangeBookShelfOptions existInUserShelf={existInUserShelf}/>
+            <ChangeBookShelfOptions existInUserShelf={existInUserShelf} state={existInUserShelf ? Book.shelf : "none"}/>
           </div>
           <div className="book-title">{Book.title}</div>
           <div className="book-authors">{bookAuthors}</div>
