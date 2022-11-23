@@ -1,34 +1,40 @@
 import PropTypes from "prop-types"
 import { useState } from "react";
 
-const ChangeBookShelfOptions = ({existInUserShelf, state}) => {
+const ChangeBookShelfOptions = ({bookShelf, updateUserBooks, book}) => {
 
-   const [selectedOption, setSelectedOption] = useState(state)
+   const [selectedOption, setSelectedOption] = useState(bookShelf)
 
    const handleSelectedOption = (e) => {
-      setSelectedOption(e.target.value)
+      const newShelf = e.target.value
+      setSelectedOption(newShelf)
+      updateUserBooks(book, newShelf)
    }
 
-   const isSelectedOption = (option) => selectedOption === option ? " ✓" :""
-   
+   const isSelectedOption = (option) => {
+    console.log(option + " - option, " + selectedOption + " - selected")
+     const tick = selectedOption === option ? "✓" :""   
+     return tick;
+   }
 
     return (<div className="book-shelf-changer">
-    <select onChange={(e) => handleSelectedOption(e)} value={selectedOption}>
-      <option disabled>
-        {existInUserShelf ? "Move to..." : "Add to..."}
+    <select onChange={(e) => handleSelectedOption(e)} defaultValue={selectedOption==="none" ? "header" : selectedOption}>
+      <option value="header" disabled>
+        {bookShelf!=="none" ? "Move to..." : "Add to..."}
       </option>
       <option value="currentlyReading">{`Currently Reading ${isSelectedOption("currentlyReading")}`}</option>
       <option value="wantToRead">{`Want to Read ${isSelectedOption("wantToRead")}`}</option>
       <option value="read">{`Read ${isSelectedOption("read")}`}</option>
-      {existInUserShelf ? (<option value="none">{`None ${isSelectedOption("none")}`}</option>) : null}
+      {bookShelf!=="none" ? (<option value="none">{`None ${isSelectedOption("none")}`}</option>) : null}
     </select>
   </div>);
 
 }
 
 ChangeBookShelfOptions.propTypes = {
-    existInUserShelf: PropTypes.bool.isRequired,
-    state: PropTypes.string.isRequired
+    bookShelf: PropTypes.string.isRequired,
+    updateUserBooks: PropTypes.func.isRequired,
+    book: PropTypes.object.isRequired,
 }
 
 export default ChangeBookShelfOptions;

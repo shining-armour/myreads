@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import BookShelf from "./BookShelf";
 import Proptypes from "prop-types"
 
-const MainPage = ({books}) => {
+const MainPage = ({books, updateUserBooks }) => {
     
     const currentReadBooks = books.filter((book) => book.shelf === "currentlyReading")
     const wantToReadBooks = books.filter((book) => book.shelf === "wantToRead")
@@ -15,9 +15,9 @@ const MainPage = ({books}) => {
         </div>
         <div className="list-books-content">
           <div>
-            <BookShelf shelfTitle="Currently Reading" booksList={currentReadBooks}/>
-            <BookShelf shelfTitle="Want to Read" booksList={wantToReadBooks}/>
-            <BookShelf shelfTitle="Read" booksList={readBooks}/>
+            <BookShelf shelfTitle="Currently Reading" booksList={currentReadBooks} updateUserBooks={updateUserBooks}/>
+            <BookShelf shelfTitle="Want to Read" booksList={wantToReadBooks} updateUserBooks={updateUserBooks}/>
+            <BookShelf shelfTitle="Read" booksList={readBooks} updateUserBooks={updateUserBooks}/>
           </div>
         </div>
         <div className="open-search">
@@ -28,7 +28,8 @@ const MainPage = ({books}) => {
 }
 
 MainPage.propTypes = {
-  books: Proptypes.array.isRequired
+  books: Proptypes.array.isRequired,
+  updateUserBooks: Proptypes.func.isRequired
 }
 
 export default MainPage;

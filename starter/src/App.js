@@ -9,6 +9,13 @@ function App() {
 
   const [userBooks, setAllBooks] = useState([]);
 
+
+  const updateUserBooks = (book, newShelf) => {
+    BooksAPI.update(book, newShelf).then(() => {
+      BooksAPI.getAll().then(res => setAllBooks(res))
+    })
+  }
+
     useEffect(() => {
       let mounted=true
 
@@ -27,8 +34,8 @@ function App() {
 
   return (
   <Routes>
-    <Route exact path="/" element={<MainPage books={userBooks}/>}/>
-    <Route path="/search" element={<SearchPage userBooks={userBooks} />}/>
+    <Route exact path="/" element={<MainPage books={userBooks} updateUserBooks={updateUserBooks}/>}/>
+    <Route path="/search" element={<SearchPage userBooks={userBooks} updateUserBooks={updateUserBooks}/>}/>
   </Routes>
   );
 }

@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
 import BookItem from "./BookItem";
 
-const BookShelf = ({shelfTitle, booksList}) => {
+const BookShelf = ({shelfTitle, booksList, updateUserBooks}) => {
 
     const bookItems = booksList.map((book) => {
-        return <BookItem key={book.id} Book={book} existInUserShelf={true}/>
+        return <BookItem key={book.id} Book={book} bookShelfArray={[book]} updateUserBooks={updateUserBooks}/>
     })
 
     return (<div className="bookshelf">
@@ -17,7 +17,8 @@ const BookShelf = ({shelfTitle, booksList}) => {
 
 BookShelf.propTypes = {
     shelfTitle: PropTypes.string.isRequired,
-    booksList:PropTypes.array.isRequired
+    booksList:PropTypes.array.isRequired,
+    updateUserBooks: PropTypes.func.isRequired
 }
 
 export default BookShelf;

@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import BookItem from "./BookItem"
 import * as BooksAPI from"./BooksAPI"
 
-const SearchPage = ({userBooks}) => {
+const SearchPage = ({userBooks, updateUserBooks}) => {
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState("")
@@ -35,7 +35,8 @@ const SearchPage = ({userBooks}) => {
   }
 
   const searchedBooks =  searchResults.length !== 0 ? searchResults.map((book) => {
-        return <BookItem key={book.id} Book={book} existInUserShelf={(userBooks.filter((userBook) => userBook.id === book.id).length !== 0 ? true : false )} />
+    const bookShelfArray = userBooks.filter((userBook) => userBook.id === book.id)
+    return <BookItem key={book.id} Book={book} bookShelfArray={bookShelfArray} updateUserBooks={updateUserBooks} />
   }) : searchQuery !== "" ? <li>No matches found!!</li> : ""
 
     
@@ -60,7 +61,8 @@ const SearchPage = ({userBooks}) => {
 }
 
 SearchPage.propTypes = {
-  userBooks: PropTypes.array.isRequired
+  userBooks: PropTypes.array.isRequired,
+  updateUserBooks: PropTypes.func.isRequired
 }
 
 
