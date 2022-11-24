@@ -10,7 +10,7 @@ const BookItem = ({ book, bookShelfArray, updateUserShelfBooks }) => {
   const bookShelf = bookShelfArray.length > 0 ? bookShelfArray[0].shelf : "none"
 
   return (<li>
-        <div className="book">
+        <div className="book" style={{border:"2px solid #a9a9a9", padding:"5px"}}>
           <div className="book-top">
             <div
               className="book-cover"
@@ -22,8 +22,8 @@ const BookItem = ({ book, bookShelfArray, updateUserShelfBooks }) => {
             ></div>
             <ChangeBookShelfOptions bookShelf={bookShelf} updateUserShelfBooks={updateUserShelfBooks} book={book}/>
           </div>
-          <div className="book-title">{book.title}</div>
-          <div className="book-authors">{bookAuthors}</div>
+            <div className="book-title">{book.title}</div>
+            <div className="book-authors">{bookAuthors}</div>
         </div>
       </li>
   );

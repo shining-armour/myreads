@@ -10,8 +10,8 @@ const MainPage = ({ userShelfBooks, updateUserShelfBooks }) => {
 
   return (
         <div className="list-books">
-        <div className="list-books-title">
-          <h1>MyReads</h1>
+        <div className="list-books-title" style={{backgroundColor:"#A020F0"}}>
+          <h1>My Bookshelf</h1>
         </div>
         <div className="list-books-content">
           <div>
@@ -21,7 +21,7 @@ const MainPage = ({ userShelfBooks, updateUserShelfBooks }) => {
           </div>
         </div>
         <div className="open-search">
-          <Link to={"/search"}>Add a book</Link>  
+          <Link to={"/search"} style={{backgroundColor:"#A020F0"}}>Add a book</Link>  
         </div>
       </div>
   );

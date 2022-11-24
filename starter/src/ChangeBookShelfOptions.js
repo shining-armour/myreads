@@ -16,7 +16,7 @@ const ChangeBookShelfOptions = ({ bookShelf, updateUserShelfBooks, book }) => {
      return tick;
    }
 
-    return (<div className="book-shelf-changer">
+    return (<div className="book-shelf-changer" style={{backgroundColor:"#A020F0"}}>
     <select onChange={(e) => handleSelectedOption(e)} value={selectedOption==="none" ? "header" : selectedOption}>
       <option value="header" disabled>
         { bookShelf !== "none" ? "Move to..." : "Add to..."}
