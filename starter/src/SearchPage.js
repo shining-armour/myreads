@@ -34,10 +34,10 @@ const SearchPage = ({userBooks, updateUserBooks}) => {
     setSearchQuery(newQuery)
   }
 
-  const searchedBooks =  searchResults.length !== 0 ? searchResults.map((book) => {
+  const searchedBooks =  searchQuery !== "" ? searchResults.length !== 0 ? searchResults.map((book) => {
     const bookShelfArray = userBooks.filter((userBook) => userBook.id === book.id)
     return <BookItem key={book.id} Book={book} bookShelfArray={bookShelfArray} updateUserBooks={updateUserBooks} />
-  }) : searchQuery !== "" ? <li>No matches found!!</li> : ""
+  }) : <li>No matches found!!</li> : ""  
 
     
   return (
