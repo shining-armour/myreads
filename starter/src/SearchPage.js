@@ -25,6 +25,7 @@ const SearchPage = ({ userShelfBooks, updateUserShelfBooks }) => {
 
       return () => {
         isMounted = false
+        setSearchResultBooks([])
       }
     }, [searchQuery])
 

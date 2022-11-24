@@ -27,6 +27,7 @@ function App() {
   
     return () => {
       mounted=false;
+      setUserShelfBooks([])
     }
   }, [])
 
