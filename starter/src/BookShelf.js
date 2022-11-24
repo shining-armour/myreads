@@ -3,9 +3,9 @@ import BookItem from "./BookItem";
 
 const BookShelf = ({shelfTitle, booksList, updateUserBooks}) => {
 
-  const bookItems = booksList.map((book) => {
+  const bookItems = booksList.length > 0 ? booksList.map((book) => {
     return <BookItem key={book.id} Book={book} bookShelfArray={[book]} updateUserBooks={updateUserBooks}/>
-  })
+  }) : <li>{`No books present in ${shelfTitle} shelf`}</li>
 
   return (<div className="bookshelf">
     <h2 className="bookshelf-title">{shelfTitle}</h2>
