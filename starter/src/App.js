@@ -7,24 +7,23 @@ import SearchPage from "./SearchPage";
 
 function App() {
 
-  const [userBooks, setAllBooks] = useState([]);
+  const [userShelfBooks, setUserShelfBooks] = useState([]);
 
-  const updateUserBooks = (book, newShelf) => {
+  const updateUserShelfBooks = (book, newShelf) => {
     BooksAPI.update(book, newShelf).then(() => {
-      BooksAPI.getAll().then(res => setAllBooks(res))
+      BooksAPI.getAll().then(res => setUserShelfBooks(res))
     })
   }
 
   useEffect(() => {
       
     let mounted=true
-    const getAllBooks = async() => {
+    const getUserShelfBooks = async() => {
     const result = await BooksAPI.getAll()
-    console.log(result[0])
-    setAllBooks(result)
+    setUserShelfBooks(result)
     }
 
-    if(mounted) getAllBooks();
+    if(mounted) getUserShelfBooks();
   
     return () => {
       mounted=false;
@@ -33,8 +32,8 @@ function App() {
 
   return (
   <Routes>
-    <Route exact path="/" element={<MainPage books={userBooks} updateUserBooks={updateUserBooks}/>}/>
-    <Route path="/search" element={<SearchPage userBooks={userBooks} updateUserBooks={updateUserBooks}/>}/>
+    <Route exact path="/" element={<MainPage userShelfBooks={userShelfBooks} updateUserShelfBooks={updateUserShelfBooks}/>}/>
+    <Route path="/search" element={<SearchPage userShelfBooks={userShelfBooks} updateUserShelfBooks={updateUserShelfBooks}/>}/>
   </Routes>
   );
 }

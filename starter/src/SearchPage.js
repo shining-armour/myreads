@@ -1,27 +1,27 @@
-import {Link} from "react-router-dom" 
-import {useState, useEffect} from "react"
+import { Link } from "react-router-dom" 
+import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import BookItem from "./BookItem"
-import * as BooksAPI from"./BooksAPI"
+import * as BooksAPI from "./BooksAPI"
 
-const SearchPage = ({userBooks, updateUserBooks}) => {
+const SearchPage = ({ userShelfBooks, updateUserShelfBooks }) => {
 
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResultBooks, setSearchResultBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
 
     let isMounted = true
-      const getSearchResults = async() => {
-        if(searchQuery!=="") {
+      const getSearchResultBooks = async() => {
+        if(searchQuery !== "") {
           const result = await BooksAPI.search(searchQuery, 20)
-          result.error ? setSearchResults([]) :setSearchResults(result)
+          result.error ? setSearchResultBooks([]) : setSearchResultBooks(result)
         } else {
-          setSearchResults([])
+          setSearchResultBooks([])
         }
       }
 
-      if(isMounted) getSearchResults()
+      if(isMounted) getSearchResultBooks()
 
       return () => {
         isMounted = false
@@ -33,9 +33,9 @@ const SearchPage = ({userBooks, updateUserBooks}) => {
     setSearchQuery(newQuery)
   }
 
-  const searchedBooks =  searchQuery !== "" ? searchResults.length !== 0 ? searchResults.map((book) => {
-    const bookShelfArray = userBooks.filter((userBook) => userBook.id === book.id)
-    return <BookItem key={book.id} Book={book} bookShelfArray={bookShelfArray} updateUserBooks={updateUserBooks} />
+  const searchedBooks =  searchQuery !== "" ? searchResultBooks.length !== 0 ? searchResultBooks.map((searchBook) => {
+    const bookShelfArray = userShelfBooks.filter((userBook) => userBook.id === searchBook.id)
+    return <BookItem key={searchBook.id} book={searchBook} bookShelfArray={bookShelfArray} updateUserShelfBooks={updateUserShelfBooks} />
   }) : <li>No matches found!!</li> : ""  
 
   return (
@@ -59,8 +59,8 @@ const SearchPage = ({userBooks, updateUserBooks}) => {
 }
 
 SearchPage.propTypes = {
-  userBooks: PropTypes.array.isRequired,
-  updateUserBooks: PropTypes.func.isRequired
+  userShelfBooks: PropTypes.array.isRequired,
+  updateUserShelfBooks: PropTypes.func.isRequired
 }
 
 

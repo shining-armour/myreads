@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
 import ChangeBookShelfOptions from "./ChangeBookShelfOptions";
 
-const BookItem = ({Book, bookShelfArray, updateUserBooks}) => {
+const BookItem = ({ book, bookShelfArray, updateUserShelfBooks }) => {
 
-  const bookAuthors = Book.authors?.map((a, index) => {
-        return <span key={index}>{Book.authors.length === 1 || index === Book.authors.length - 1 ? a : `${a}, ` }</span>
+  const bookAuthors = book.authors?.map((a, index) => {
+        return <span key={index}>{book.authors.length === 1 || index === book.authors.length - 1 ? a : `${a}, ` }</span>
     })
 
   const bookShelf = bookShelfArray.length > 0 ? bookShelfArray[0].shelf : "none"
@@ -17,12 +17,12 @@ const BookItem = ({Book, bookShelfArray, updateUserBooks}) => {
               style={{
                 width: 128,
                 height: 193,
-                backgroundImage:`url(${Book.imageLinks?.thumbnail})`
+                backgroundImage:`url(${book.imageLinks?.thumbnail})`
                }}
             ></div>
-            <ChangeBookShelfOptions bookShelf={bookShelf} updateUserBooks={updateUserBooks} book={Book}/>
+            <ChangeBookShelfOptions bookShelf={bookShelf} updateUserShelfBooks={updateUserShelfBooks} book={book}/>
           </div>
-          <div className="book-title">{Book.title}</div>
+          <div className="book-title">{book.title}</div>
           <div className="book-authors">{bookAuthors}</div>
         </div>
       </li>
@@ -30,9 +30,9 @@ const BookItem = ({Book, bookShelfArray, updateUserBooks}) => {
 }
 
 BookItem.propTypes = {
-  Book:PropTypes.object.isRequired,
+  book: PropTypes.object.isRequired,
   bookShelfArray: PropTypes.array.isRequired,
-  updateUserBooks: PropTypes.func.isRequired
+  updateUserShelfBooks: PropTypes.func.isRequired
 }
 
 export default BookItem;

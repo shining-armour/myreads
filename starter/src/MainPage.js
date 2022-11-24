@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 import BookShelf from "./BookShelf";
 import Proptypes from "prop-types"
 
-const MainPage = ({books, updateUserBooks }) => {
+const MainPage = ({ userShelfBooks, updateUserShelfBooks }) => {
     
-  const currentReadBooks = books.filter((book) => book.shelf === "currentlyReading")
-  const wantToReadBooks = books.filter((book) => book.shelf === "wantToRead")
-  const readBooks = books.filter((book) => book.shelf === "read")
+  const currentReadBooks = userShelfBooks.filter((book) => book.shelf === "currentlyReading")
+  const wantToReadBooks = userShelfBooks.filter((book) => book.shelf === "wantToRead")
+  const readBooks = userShelfBooks.filter((book) => book.shelf === "read")
 
   return (
         <div className="list-books">
@@ -15,9 +15,9 @@ const MainPage = ({books, updateUserBooks }) => {
         </div>
         <div className="list-books-content">
           <div>
-            <BookShelf shelfTitle="Currently Reading" booksList={currentReadBooks} updateUserBooks={updateUserBooks}/>
-            <BookShelf shelfTitle="Want to Read" booksList={wantToReadBooks} updateUserBooks={updateUserBooks}/>
-            <BookShelf shelfTitle="Read" booksList={readBooks} updateUserBooks={updateUserBooks}/>
+            <BookShelf shelfTitle="Currently Reading" shelfBooks={currentReadBooks} updateUserShelfBooks={updateUserShelfBooks}/>
+            <BookShelf shelfTitle="Want to Read" shelfBooks={wantToReadBooks} updateUserShelfBooks={updateUserShelfBooks}/>
+            <BookShelf shelfTitle="Read" shelfBooks={readBooks} updateUserShelfBooks={updateUserShelfBooks}/>
           </div>
         </div>
         <div className="open-search">
@@ -28,8 +28,8 @@ const MainPage = ({books, updateUserBooks }) => {
 }
 
 MainPage.propTypes = {
-  books: Proptypes.array.isRequired,
-  updateUserBooks: Proptypes.func.isRequired
+  userShelfBooks: Proptypes.array.isRequired,
+  updateUserShelfBooks: Proptypes.func.isRequired
 }
 
 export default MainPage;
