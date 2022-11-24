@@ -12,13 +12,12 @@ const ChangeBookShelfOptions = ({bookShelf, updateUserBooks, book}) => {
    }
 
    const isSelectedOption = (option) => {
-    console.log(option + " - option, " + selectedOption + " - selected")
-     const tick = selectedOption === option ? "✓" :""   
+     const tick = selectedOption === option ? "✓" : ""   
      return tick;
    }
 
     return (<div className="book-shelf-changer">
-    <select onChange={(e) => handleSelectedOption(e)} defaultValue={selectedOption==="none" ? "header" : selectedOption}>
+    <select onChange={(e) => handleSelectedOption(e)} value={selectedOption==="none" ? "header" : selectedOption}>
       <option value="header" disabled>
         {bookShelf!=="none" ? "Move to..." : "Add to..."}
       </option>
