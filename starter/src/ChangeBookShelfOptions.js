@@ -26,14 +26,14 @@ const ChangeBookShelfOptions = ({bookShelf, updateUserBooks, book}) => {
       <option value="read">{`Read ${isSelectedOption("read")}`}</option>
       {bookShelf!=="none" ? (<option value="none">{`None ${isSelectedOption("none")}`}</option>) : null}
     </select>
-  </div>);
-
+  </div>
+  );
 }
 
 ChangeBookShelfOptions.propTypes = {
-    bookShelf: PropTypes.string.isRequired,
-    updateUserBooks: PropTypes.func.isRequired,
-    book: PropTypes.object.isRequired,
+  bookShelf: PropTypes.string.isRequired,
+  updateUserBooks: PropTypes.func.isRequired,
+  book: PropTypes.object.isRequired,
 }
 
 export default ChangeBookShelfOptions;

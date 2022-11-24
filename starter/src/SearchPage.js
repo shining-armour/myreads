@@ -9,10 +9,9 @@ const SearchPage = ({userBooks, updateUserBooks}) => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState("")
 
-   useEffect(() => {
-      
-    let isMounted = true;
+  useEffect(() => {
 
+    let isMounted = true
       const getSearchResults = async() => {
         if(searchQuery!=="") {
           const result = await BooksAPI.search(searchQuery, 20)
@@ -23,12 +22,12 @@ const SearchPage = ({userBooks, updateUserBooks}) => {
       }
 
       if(isMounted) getSearchResults()
-  
+
       return () => {
         isMounted = false
       }
-
     }, [searchQuery])
+
 
   const updateSearchQuery = (newQuery) => {
     setSearchQuery(newQuery)
@@ -39,7 +38,6 @@ const SearchPage = ({userBooks, updateUserBooks}) => {
     return <BookItem key={book.id} Book={book} bookShelfArray={bookShelfArray} updateUserBooks={updateUserBooks} />
   }) : <li>No matches found!!</li> : ""  
 
-    
   return (
         <div className="search-books">
           <div className="search-books-bar">

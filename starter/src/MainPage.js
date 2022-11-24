@@ -4,11 +4,11 @@ import Proptypes from "prop-types"
 
 const MainPage = ({books, updateUserBooks }) => {
     
-    const currentReadBooks = books.filter((book) => book.shelf === "currentlyReading")
-    const wantToReadBooks = books.filter((book) => book.shelf === "wantToRead")
-    const readBooks = books.filter((book) => book.shelf === "read")
+  const currentReadBooks = books.filter((book) => book.shelf === "currentlyReading")
+  const wantToReadBooks = books.filter((book) => book.shelf === "wantToRead")
+  const readBooks = books.filter((book) => book.shelf === "read")
 
-    return (
+  return (
         <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
@@ -24,7 +24,7 @@ const MainPage = ({books, updateUserBooks }) => {
           <Link to={"/search"}>Add a book</Link>  
         </div>
       </div>
-    );
+  );
 }
 
 MainPage.propTypes = {

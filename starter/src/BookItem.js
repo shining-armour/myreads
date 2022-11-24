@@ -3,13 +3,13 @@ import ChangeBookShelfOptions from "./ChangeBookShelfOptions";
 
 const BookItem = ({Book, bookShelfArray, updateUserBooks}) => {
 
-    const bookAuthors = Book.authors?.map((a, index) => {
+  const bookAuthors = Book.authors?.map((a, index) => {
         return <span key={index}>{Book.authors.length === 1 || index === Book.authors.length - 1 ? a : `${a}, ` }</span>
     })
 
-    const bookShelf = bookShelfArray.length > 0 ? bookShelfArray[0].shelf : "none"
+  const bookShelf = bookShelfArray.length > 0 ? bookShelfArray[0].shelf : "none"
 
-    return (<li>
+  return (<li>
         <div className="book">
           <div className="book-top">
             <div
@@ -25,13 +25,14 @@ const BookItem = ({Book, bookShelfArray, updateUserBooks}) => {
           <div className="book-title">{Book.title}</div>
           <div className="book-authors">{bookAuthors}</div>
         </div>
-      </li>);
+      </li>
+  );
 }
 
 BookItem.propTypes = {
-    Book:PropTypes.object.isRequired,
-    bookShelfArray: PropTypes.array.isRequired,
-    updateUserBooks: PropTypes.func.isRequired
+  Book:PropTypes.object.isRequired,
+  bookShelfArray: PropTypes.array.isRequired,
+  updateUserBooks: PropTypes.func.isRequired
 }
 
 export default BookItem;
