@@ -46,7 +46,7 @@ const SearchPage = ({ userShelfBooks, updateUserShelfBooks }) => {
             <div className="search-books-input-wrapper">
               <input
                 type="text"
-                placeholder="Search by title"
+                placeholder="Search books by title or author"
                 value={searchQuery}
                 onChange={(e) => updateSearchQuery(e.target.value)}
               />
