@@ -7,7 +7,8 @@ Of course, you are free to start this project from scratch if you wish! Just be 
 ## TL;DR
 
 To get started developing right away:
-
+- Clone this repository using `git clone https://github.com/shining-armour/myreads.git`
+- Switch to starter directory using `cd starter`
 - install all project dependencies with `npm install`
 - start the development server with `npm start`
 
@@ -24,8 +25,12 @@ To get started developing right away:
 └── src
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
     ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
+    ├── BookItem.js # Book component for each book visible on Main Page and Search Page.
+    ├── BookShelf.js # BookShelf component for each shelf on the Main Page.
+    ├── ChangeBookShelfOptions.js # Dropdown Menu component for changing bookshelves.
+    ├── MainPage.js # Main Page component for showing three shelves for books.
+    ├── SearchPage.js # Search Page component for searching books from API. 
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
     │   ├── arrow-back.svg
